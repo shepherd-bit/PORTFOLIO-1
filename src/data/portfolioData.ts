@@ -13,7 +13,7 @@ export const portfolioInfo = {
     "Security & Data Privacy",
     "Reliability & Uptime"
   ],
-  currentStatus: "Currently working on Python backend frameworks",
+  currentStatus: "Currently working on AI & Machine Learning Engineering",
   quote: "Look, AI can build stuff. But those ruthless industry level details is where I come in - Sign Me Up!!",
   quoteAuthor: "- Eng. Me",
   aboutMe: {

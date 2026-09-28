@@ -97,10 +97,10 @@ export function Hero({ onContactClick }: HeroProps) {
               {/* Status Badge beneath the Avatar */}
               <div className="w-full mt-3 border border-[#ABB2BF] bg-[#282C33] px-3.5 py-2.5 flex items-center gap-3 text-xs sm:text-sm text-[#ABB2BF] shadow-lg">
                 <span className="w-4 h-4 bg-[#C778DD] shrink-0 inline-block shadow-[0_0_10px_rgba(199,120,221,0.6)]" />
-                <span className="truncate">
+                <span>
                   Currently working on{' '}
                   <strong className="text-white font-semibold">
-                    Python backend frameworks
+                    AI & Machine Learning Engineering
                   </strong>
                 </span>
               </div>
