@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  background-color: #282C33;
+  color: #ABB2BF;
+}
+
+/* Custom scrollbar matching dark cyber aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #282C33;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3e4451;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C778DD;
+}
