@@ -95,7 +95,7 @@ export function Hero({ onContactClick }: HeroProps) {
               </div>
 
               {/* Status Badge beneath the Avatar */}
-              <div className="w-full mt-3 -ml-12 -mr-12 border border-[#ABB2BF] bg-[#282C33] px-3.5 py-2.5 flex items-center gap-3 text-xs sm:text-sm text-[#ABB2BF] shadow-lg">
+              <div className="w-fit mt-3 border border-[#ABB2BF] bg-[#282C33] px-3.5 py-2.5 flex items-center gap-3 text-xs sm:text-sm text-[#ABB2BF] shadow-lg">
                 <span className="w-4 h-4 bg-[#C778DD] shrink-0 inline-block shadow-[0_0_10px_rgba(199,120,221,0.6)]" />
                 <span className="whitespace-nowrap">
                   Currently working on{' '}
