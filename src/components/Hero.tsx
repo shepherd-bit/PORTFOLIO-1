@@ -72,7 +72,7 @@ export function Hero({ onContactClick }: HeroProps) {
 
                 {/* Gray secondary wireframe offset */}
                 <div 
-                  className="absolute -bottom-6 -left-6 w-56 h-56 border border-[#ABB2BF]/40 pointer-events-none" 
+                  className="absolute -bottom-16 -left-6 w-56 h-56 border border-[#ABB2BF]/40 pointer-events-none" 
                   aria-hidden="true" 
                 />
 
