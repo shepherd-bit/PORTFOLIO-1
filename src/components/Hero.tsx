@@ -66,7 +66,7 @@ export function Hero({ onContactClick }: HeroProps) {
                  
                 {/* Purple outer square wireframe */}
                 <div 
-                  className="absolute -top-7 -right-7 w-72 h-72 border-2 border-[#C778DD] opacity-85 pointer-events-none" 
+                  className="absolute -top-10 -right-7 w-72 h-72 border-2 border-[#C778DD] opacity-85 pointer-events-none" 
                   aria-hidden="true" 
                 />
 
@@ -78,12 +78,12 @@ export function Hero({ onContactClick }: HeroProps) {
 
                 {/* Dot Matrix Pattern at top-left */}
                 <div className="absolute -left-14 top-8 z-0 opacity-70">
-                  <DotGrid rows={5} cols={5} color="#ABB2BF" />
+                  <DotGrid rows={5} cols={5} color="#ABB2BF" dotSize="w-3 h-3" />
                 </div>
 
                 {/* Dot Matrix Pattern at bottom-right */}
-                <div className="absolute -right-14 bottom-12 z-0 opacity-80">
-                  <DotGrid rows={4} cols={4} color="#C778DD" />
+                <div className="absolute -right-28 bottom-12 z-0 opacity-80">
+                  <DotGrid rows={4} cols={4} color="#C778DD" dotSize="w-3 h-3" />
                 </div>
 
                 {/* Profile Picture */}

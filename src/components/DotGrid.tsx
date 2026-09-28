@@ -3,9 +3,10 @@ interface DotGridProps {
   cols?: number;
   color?: string;
   className?: string;
+  dotSize?: string;
 }
 
-export function DotGrid({ rows = 5, cols = 5, color = "#ABB2BF", className = "" }: DotGridProps) {
+export function DotGrid({ rows = 5, cols = 5, color = "#ABB2BF", className = "", dotSize = "w-1 h-1" }: DotGridProps) {
   return (
     <div
       className={`inline-grid gap-2 select-none pointer-events-none ${className}`}
@@ -15,7 +16,7 @@ export function DotGrid({ rows = 5, cols = 5, color = "#ABB2BF", className = "" 
       {Array.from({ length: rows * cols }).map((_, i) => (
         <span
           key={i}
-          className="w-1 h-1 rounded-full transition-colors duration-300"
+          className={`${dotSize} rounded-full transition-colors duration-300`}
           style={{ backgroundColor: color }}
         />
       ))}
