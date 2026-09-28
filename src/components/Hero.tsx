@@ -77,12 +77,12 @@ export function Hero({ onContactClick }: HeroProps) {
                 />
 
                 {/* Dot Matrix Pattern at top-left */}
-                <div className="absolute -left-14 top-8 z-0 opacity-70">
+                <div className="absolute -left-2 top-8 z-0 opacity-70">
                   <DotGrid rows={8} cols={8} color="#ABB2BF" />
                 </div>
 
                 {/* Dot Matrix Pattern at bottom-right */}
-                <div className="absolute -right-40 bottom-12 z-0 opacity-80">
+                <div className="absolute -right-8 bottom-12 z-0 opacity-80">
                   <DotGrid rows={7} cols={7} color="#C778DD" />
                 </div>
 
