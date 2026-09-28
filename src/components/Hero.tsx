@@ -14,7 +14,7 @@ export function Hero({ onContactClick }: HeroProps) {
           
           {/* Left Column: Introductions and Guarantees */}
           <div className="lg:col-span-7 space-y-6">
-            <h1 className="text-3xl sm:text-4xl md:text-[2.65rem] font-bold text-white leading-tight tracking-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-[2.1rem] font-bold text-white leading-tight tracking-tight">
               Hi, I am <span className="text-white">Titus</span>, a{' '}
               <span className="text-[#C778DD]">full Stack web developer</span>.{' '}
               <br className="hidden sm:inline" />
@@ -23,12 +23,24 @@ export function Hero({ onContactClick }: HeroProps) {
               <span className="text-[#C778DD]">Solo Projects</span>
             </h1>
 
-            {/* Guarantees Box */}
-            <div className="space-y-2 text-sm md:text-[0.95rem] text-[#ABB2BF] leading-relaxed max-w-xl">
-              <p className="font-normal">
-                <span className="text-white font-medium">Guarantees:</span>{' '}
-                {portfolioInfo.guarantees.join(', ')}
-              </p>
+            {/* Guarantees Terminal Box */}
+            <div className="max-w-xl border border-[#ABB2BF]/30 bg-[#1E1E1E] shadow-lg overflow-hidden">
+              {/* Terminal Header */}
+              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#ABB2BF]/20 bg-[#252526]">
+                <span className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+                <span className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
+                <span className="w-3 h-3 rounded-full bg-[#28C840]" />
+                <span className="ml-3 text-xs text-[#ABB2BF] font-mono"># guarantees</span>
+              </div>
+              {/* Terminal Body */}
+              <div className="px-4 py-4 font-mono text-sm md:text-[0.9rem] text-[#ABB2BF] space-y-2.5">
+                {portfolioInfo.guarantees.map((item) => (
+                  <div key={item} className="flex items-center gap-2.5">
+                    <span className="text-[#4ADE80] text-xs">&#9670;</span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* CTA Button */}
