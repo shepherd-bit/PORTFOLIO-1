@@ -59,11 +59,11 @@ export function Hero({ onContactClick }: HeroProps) {
 
           {/* Right Column: Silhouette Avatar & Status Badge */}
           <div className="lg:col-span-5 flex flex-col items-center">
-            <div className="relative w-full max-w-sm flex flex-col items-center">
+            <div className="relative w-full flex-1 flex flex-col items-center">
               
               {/* Decorative Geometric Wireframes behind Avatar */}
-              <div className="relative w-72 sm:w-80 flex items-center justify-center">
-                
+              <div className="relative w-full flex-1 flex items-end justify-center">
+                 
                 {/* Purple outer square wireframe */}
                 <div 
                   className="absolute -top-7 -right-7 w-72 h-72 border-2 border-[#C778DD] opacity-85 pointer-events-none" 
@@ -90,7 +90,7 @@ export function Hero({ onContactClick }: HeroProps) {
                 <img
                   src="/pfp.png"
                   alt="Titus - Full Stack Web Developer"
-                  className="relative z-10 w-72 sm:w-80 h-auto drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
+                  className="relative z-10 w-full max-w-sm h-auto drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
                 />
               </div>
 
