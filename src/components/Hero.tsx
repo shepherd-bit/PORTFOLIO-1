@@ -24,19 +24,19 @@ export function Hero({ onContactClick }: HeroProps) {
             </h1>
 
             {/* Guarantees Terminal Box */}
-            <div className="max-w-xl border border-[#ABB2BF]/30 bg-[#1E1E1E] shadow-lg overflow-hidden">
+            <div className="max-w-xl border border-[#ABB2BF]/20 bg-[#282C33] shadow-lg overflow-hidden">
               {/* Terminal Header */}
-              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#ABB2BF]/20 bg-[#252526]">
-                <span className="w-3 h-3 rounded-full bg-[#FF5F57]" />
-                <span className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
-                <span className="w-3 h-3 rounded-full bg-[#28C840]" />
-                <span className="ml-3 text-xs text-[#ABB2BF] font-mono"># guarantees</span>
+              <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#ABB2BF]/10 bg-[#21252B]">
+                <span className="w-3 h-3 rounded-full bg-[#C778DD]/80" />
+                <span className="w-3 h-3 rounded-full bg-[#ABB2BF]/40" />
+                <span className="w-3 h-3 rounded-full bg-[#ABB2BF]/40" />
+                <span className="ml-3 text-xs text-[#ABB2BF]/70 font-mono"># guarantees</span>
               </div>
               {/* Terminal Body */}
               <div className="px-4 py-4 font-mono text-sm md:text-[0.9rem] text-[#ABB2BF] space-y-2.5">
                 {portfolioInfo.guarantees.map((item) => (
                   <div key={item} className="flex items-center gap-2.5">
-                    <span className="text-[#4ADE80] text-xs">&#9670;</span>
+                    <span className="text-[#C778DD] text-xs">&#9670;</span>
                     <span>{item}</span>
                   </div>
                 ))}
