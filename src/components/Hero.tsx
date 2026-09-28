@@ -50,82 +50,36 @@ export function Hero({ onContactClick }: HeroProps) {
             <div className="relative w-full max-w-sm flex flex-col items-center">
               
               {/* Decorative Geometric Wireframes behind Avatar */}
-              <div className="relative w-72 sm:w-80 h-72 sm:h-80 flex items-center justify-center">
+              <div className="relative w-72 sm:w-80 flex items-center justify-center">
                 
                 {/* Purple outer square wireframe */}
                 <div 
-                  className="absolute -top-3 -right-2 w-56 h-56 border-2 border-[#C778DD] opacity-85 pointer-events-none" 
+                  className="absolute -top-7 -right-7 w-72 h-72 border-2 border-[#C778DD] opacity-85 pointer-events-none" 
                   aria-hidden="true" 
                 />
 
                 {/* Gray secondary wireframe offset */}
                 <div 
-                  className="absolute -bottom-2 -left-3 w-48 h-48 border border-[#ABB2BF]/40 pointer-events-none" 
+                  className="absolute -bottom-6 -left-6 w-56 h-56 border border-[#ABB2BF]/40 pointer-events-none" 
                   aria-hidden="true" 
                 />
 
                 {/* Dot Matrix Pattern at top-left */}
-                <div className="absolute top-2 left-2 z-0 opacity-70">
+                <div className="absolute -left-14 top-8 z-0 opacity-70">
                   <DotGrid rows={5} cols={5} color="#ABB2BF" />
                 </div>
 
                 {/* Dot Matrix Pattern at bottom-right */}
-                <div className="absolute bottom-6 right-2 z-0 opacity-80">
+                <div className="absolute -right-14 bottom-12 z-0 opacity-80">
                   <DotGrid rows={4} cols={4} color="#C778DD" />
                 </div>
 
-                {/* Developer Silhouette Illustration (Hoodie Developer) */}
-                <div className="relative z-10 w-64 h-72 flex items-end justify-center overflow-hidden">
-                  <svg
-                    viewBox="0 0 260 290"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-full h-full drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
-                  >
-                    <defs>
-                      <linearGradient id="hoodieGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#1E2228" />
-                        <stop offset="70%" stopColor="#171A1F" />
-                        <stop offset="100%" stopColor="#101216" />
-                      </linearGradient>
-                      <linearGradient id="cyberGlow" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#C778DD" stopOpacity="0.8" />
-                        <stop offset="100%" stopColor="#61AFEF" stopOpacity="0.4" />
-                      </linearGradient>
-                    </defs>
-
-                    {/* Developer body/torso */}
-                    <path
-                      d="M30 290 C35 240, 55 210, 85 195 L95 190 C105 185, 110 178, 110 170 L110 160 C100 155, 92 145, 90 130 C85 95, 95 65, 130 65 C165 65, 175 95, 170 130 C168 145, 160 155, 150 160 L150 170 C150 178, 155 185, 165 190 L175 195 C205 210, 225 240, 230 290 Z"
-                      fill="url(#hoodieGrad)"
-                      stroke="#3E4451"
-                      strokeWidth="1.5"
-                    />
-
-                    {/* Hoodie Rim & Shadow */}
-                    <path
-                      d="M92 135 C88 95, 102 60, 130 60 C158 60, 172 95, 168 135 C165 160, 150 175, 130 175 C110 175, 95 160, 92 135 Z"
-                      fill="#121418"
-                      stroke="#C778DD"
-                      strokeWidth="1.2"
-                      strokeDasharray="4 2"
-                    />
-
-                    {/* Masked/Shaded Face interior */}
-                    <ellipse cx="130" cy="120" rx="26" ry="32" fill="#0c0e12" />
-
-                    {/* Ambient Cyber Eye / Glasses Glint */}
-                    <rect x="116" y="112" width="10" height="3" rx="1.5" fill="#C778DD" opacity="0.9" />
-                    <rect x="134" y="112" width="10" height="3" rx="1.5" fill="#C778DD" opacity="0.9" />
-
-                    {/* Zipper / Center line */}
-                    <line x1="130" y1="175" x2="130" y2="290" stroke="#3E4451" strokeWidth="2" strokeDasharray="3 3" />
-
-                    {/* Subtle Shoulder Highlights */}
-                    <path d="M55 235 Q90 205 120 200" stroke="#C778DD" strokeWidth="1.2" opacity="0.4" />
-                    <path d="M205 235 Q170 205 140 200" stroke="#ABB2BF" strokeWidth="1" opacity="0.3" />
-                  </svg>
-                </div>
+                {/* Profile Picture */}
+                <img
+                  src="/pfp.png"
+                  alt="Titus - Full Stack Web Developer"
+                  className="relative z-10 w-72 sm:w-80 h-auto drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
+                />
               </div>
 
               {/* Status Badge beneath the Avatar */}
