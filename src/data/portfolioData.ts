@@ -3,7 +3,7 @@ import { Project, SkillCategory, ExperienceItem, PricingTier } from '../types';
 export const portfolioInfo = {
   name: "Titus",
   role: "full Stack web developer",
-  tagline: "Equipped and Ready for Team or Solo Projects",
+  tagline: "Ready for Team or Solo Projects",
   guarantees: [
     "Performance & Speed",
     "SEO",
