@@ -80,7 +80,7 @@ export function AboutMe({ onPricingClick }: AboutMeProps) {
               <img
                 src="./about-me/lincon.png"
                 alt="Titus - Full Stack Web Developer"
-                className="relative z-10 w-full max-w-sm h-auto drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
+                className="relative z-10 w-full max-w-sm h-auto -mt-50 scale-120 drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
               />
 
             </div>
