@@ -59,7 +59,7 @@ export default function App() {
       />
 
       {/* Main App Container */}
-      <div className="md:pl-12">
+      <div>
         
         {/* Sticky Header Navigation */}
         <Header onResumeClick={() => setIsResumeModalOpen(true)} />
