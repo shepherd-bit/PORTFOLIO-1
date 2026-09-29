@@ -88,7 +88,7 @@ export function Hero({ onContactClick }: HeroProps) {
 
                 {/* Profile Picture */}
                 <img
-                  src="/pfp.png"
+                  src="./pfp.png"
                   alt="Titus - Full Stack Web Developer"
                   className="relative z-10 w-full max-w-sm h-auto drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
                 />

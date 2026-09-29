@@ -1,34 +1,59 @@
 import { useState } from 'react';
-import { ExternalLink, Terminal, Server, ShieldCheck, Cpu } from 'lucide-react';
-import { projectsData } from '../data/portfolioData';
-import { Project } from '../types';
-import { DotGrid } from './DotGrid';
+import { ExternalLink, Github, Code2 } from 'lucide-react';
 
-interface ProjectsProps {
-  onSelectProject: (project: Project) => void;
+interface Project {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  liveUrl: string;
+  sourceUrl: string;
+  imageUrl: string;
 }
 
-export function Projects({ onSelectProject }: ProjectsProps) {
-  const [filter, setFilter] = useState<'all' | 'python' | 'fullstack'>('all');
+const projectsData: Project[] = [
+  {
+    id: '1',
+    title: 'Noir',
+    category: 'Real Estate',
+    description: 'Luxury real estate showcase featuring curated high-end properties across Los Angeles — from Beverly Hills villas to Malibu beachfront estates — with advanced filtering, neighborhood guides, and an editorial, design-forward browsing experience.',
+    tags: ['React 18', 'Vite', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    liveUrl: 'https://noir-estates-1.vercel.app/',
+    sourceUrl: 'https://github.com/shepherd-bit/Noir-Estates',
+    imageUrl: '', // Insert your image path here
+  },
+  {
+    id: '2',
+    title: 'Nova',
+    category: 'Real Estate',
+    description: 'A production-ready, direct-to-consumer e-commerce starter for selling cutting edge tech consumer products.',
+    tags: ['Turborepo', 'Medusa.js', 'Node.js', 'PostgreSQL', 'React 19', 'TypeScript', 'Tailwind CSS', 'Stripe'],
+    liveUrl: 'https://nova-1-wslo.vercel.app/',
+    sourceUrl: 'https://github.com/shepherd-bit/Nova_',
+    imageUrl: '', // Insert your image path here
+  },
+  {
+    id: '3',
+    title: 'Vortex',
+    category: 'CEO Journal',
+    description: 'Vortex Blogs is a CEO journal for Vortex Technology, a drone manufacturing startup, where the CEO posts company updates.',
+    tags: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Google GenAI', 'Express', 'Strapi', 'PostgreSQL'],
+    liveUrl: 'https://vortex-blogs-1-esum.vercel.app/',
+    sourceUrl: 'https://github.com/shepherd-bit/Vortex__Blogs',
+    imageUrl: '', // Insert your image path here
+  },
+];
 
-  const filteredProjects = projectsData.filter((p) => {
-    if (filter === 'all') return true;
-    if (filter === 'python') return p.tags.includes('Python');
-    if (filter === 'fullstack') return p.tags.includes('HTML') || p.tags.includes('React');
-    return true;
-  });
+interface ProjectsProps {
+  onSelectProject?: (project: Project) => void;
+}
+
+export function Projects({}: ProjectsProps) {
+  const [projects] = useState<Project[]>(projectsData);
 
   return (
-    <section id="projects" className="py-14 md:py-20 relative">
-      
-      {/* Decorative dot matrix on the far left */}
-      <div className="hidden xl:block absolute left-2 top-24 pointer-events-none opacity-40">
-        <DotGrid rows={5} cols={3} color="#ABB2BF" />
-      </div>
-
-      {/* Decorative wireframe box on the far right */}
-      <div className="hidden xl:block absolute -right-6 top-48 w-24 h-36 border border-[#ABB2BF]/30 pointer-events-none" />
-
+    <section id="projects" className="py-14 md:py-20 relative bg-[#21252b] text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -39,98 +64,95 @@ export function Projects({ onSelectProject }: ProjectsProps) {
               projects
             </h2>
           </div>
-          {/* Horizontal Accent Line */}
           <div className="h-[1px] bg-[#C778DD] flex-grow max-w-md opacity-80" />
         </div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid (3 horizontal cards) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+          {projects.map((project) => (
             <div
               key={project.id}
-              className="border border-[#ABB2BF]/80 bg-[#282C33] flex flex-col justify-between group hover:border-[#C778DD] transition-colors duration-200"
+              className="group bg-[#282C33] border border-[#ABB2BF]/30 hover:border-[#C778DD] transition-all duration-300 flex flex-col justify-between rounded-xl overflow-hidden shadow-xl p-5"
             >
-              {/* Project Preview Banner */}
-              <div className="relative h-48 bg-gradient-to-br from-[#1b1e24] via-[#21252b] to-[#17191d] border-b border-[#ABB2BF]/50 overflow-hidden flex flex-col justify-between p-4 select-none">
-                
-                {/* Background circuit/grid decoration */}
-                <div 
-                  className="absolute inset-0 opacity-10 bg-[radial-gradient(#C778DD_1px,transparent_1px)] [background-size:12px_12px]" 
-                  aria-hidden="true" 
-                />
-
-                {/* Top preview header */}
-                <div className="relative z-10 flex items-center justify-between">
-                  <div className="inline-flex items-center gap-1.5 bg-[#E57B10] text-white px-2.5 py-1 text-xs font-bold rounded shadow">
-                    <Server className="w-3 h-3" />
-                    <span>{project.imageText?.badge || project.title}</span>
+              <div>
+                {/* Window Frame Mockup Header */}
+                <div className="bg-[#1e2227] rounded-t-lg border border-[#ABB2BF]/20 overflow-hidden mb-4 shadow-inner">
+                  {/* macOS style window dots & Category title bar */}
+                  <div className="flex items-center justify-between px-3 py-2 bg-[#17191d] border-b border-[#ABB2BF]/10">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                    </div>
+                    <span className="text-[11px] font-mono text-[#ABB2BF]/70 truncate px-2">
+                      {project.category}
+                    </span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] text-emerald-400 font-mono">ONLINE</span>
+
+                  {/* Embedded Thumbnail Image Container */}
+                  <div className="relative h-40 w-full overflow-hidden bg-black/40">
+                    {project.imageUrl ? (
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                        style={{ backgroundImage: `url(${project.imageUrl})` }}
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center text-xs font-mono text-[#ABB2BF]/40">
+                        [ Insert Thumbnail ]
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                {/* Center visual: ChertNodes specs mockup as in screenshot */}
-                <div className="relative z-10 my-auto py-1">
-                  <p className="text-xs text-[#ABB2BF] font-medium tracking-wide mb-2">
-                    {project.imageText?.subBadge || project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 text-[11px] text-white">
-                    {project.imageText?.features.map((feat, idx) => (
-                      <span 
-                        key={idx} 
-                        className="inline-flex items-center gap-1 bg-[#282C33]/90 border border-[#ABB2BF]/30 px-2 py-0.5"
+                {/* Project Title & Description */}
+                <h3 className="text-xl font-bold text-white group-hover:text-[#C778DD] transition-colors mb-2">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-[#ABB2BF] leading-relaxed line-clamp-3 mb-4">
+                  {project.description}
+                </p>
+              </div>
+
+              <div>
+                {/* Tech Stack Grid Tags */}
+                <div className="mb-5 pt-3 border-t border-[#ABB2BF]/15">
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-[#ABB2BF]/70 mb-2">
+                    <Code2 className="w-3.5 h-3.5 text-[#C778DD]" />
+                    <span>Tech Stack</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs font-mono px-2 py-1 rounded bg-[#1e2227] text-[#ABB2BF] border border-[#ABB2BF]/15"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#C778DD]" />
-                        {feat}
+                        {tech}
                       </span>
                     ))}
                   </div>
                 </div>
 
-                {/* Subtle bottom telemetry bar */}
-                <div className="relative z-10 flex items-center justify-between text-[10px] text-[#ABB2BF]/70 font-mono pt-1 border-t border-white/5">
-                  <span>RAM: 99.4% OPTIMIZED</span>
-                  <span>SSL: ACTIVE</span>
-                </div>
-              </div>
-
-              {/* Technologies Tags Row */}
-              <div className="border-b border-[#ABB2BF]/80 px-4 py-2 text-xs text-[#ABB2BF] font-mono flex flex-wrap gap-x-3 gap-y-1 bg-[#282C33]">
-                {project.tags.map((tag) => (
-                  <span key={tag}>{tag}</span>
-                ))}
-              </div>
-
-              {/* Card Information & Action Buttons */}
-              <div className="p-4 sm:p-5 flex-grow flex flex-col justify-between space-y-4">
-                <div className="space-y-1.5">
-                  <h3 className="text-xl font-bold text-white group-hover:text-[#C778DD] transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-[#ABB2BF] leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                {/* Buttons (Live <~> and Cached >=) */}
-                <div className="flex items-center gap-3 pt-2">
-                  <button
-                    onClick={() => onSelectProject(project)}
-                    className="border border-[#C778DD] text-white hover:bg-[#C778DD]/20 px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5"
+                {/* Bottom Equal-Width Action Buttons */}
+                <div className="grid grid-cols-2 gap-2.5">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 bg-[#C778DD] hover:bg-[#b062c4] text-[#282C33] font-semibold py-2 px-3 rounded-lg text-xs transition-all cursor-pointer shadow-sm"
                   >
-                    <span>Live</span>
-                    <span className="text-[#C778DD]">&lt;~&gt;</span>
-                  </button>
+                    <span>Live Demo</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
 
-                  <button
-                    onClick={() => onSelectProject(project)}
-                    className="border border-[#ABB2BF] text-[#ABB2BF] hover:text-white hover:border-white px-4 py-1.5 text-xs sm:text-sm font-medium transition-colors cursor-pointer inline-flex items-center gap-1.5"
+                  <a
+                    href={project.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 bg-[#1e2227] hover:bg-[#21252b] text-white border border-[#ABB2BF]/30 hover:border-white font-medium py-2 px-3 rounded-lg text-xs transition-all cursor-pointer"
                   >
-                    <span>Cached</span>
-                    <span>&gt;=</span>
-                  </button>
+                    <Github className="w-3.5 h-3.5 text-[#ABB2BF]" />
+                    <span>Source</span>
+                  </a>
                 </div>
               </div>
 
