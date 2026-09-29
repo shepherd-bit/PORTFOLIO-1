@@ -67,6 +67,11 @@ export function Projects({}: ProjectsProps) {
           <div className="h-[1px] bg-[#C778DD] flex-grow max-w-md opacity-80" />
         </div>
 
+        {/* Disclaimer Note */}
+        <p className="text-sm text-[#ABB2BF]/80 leading-relaxed mb-8 max-w-2xl">
+          All Live Demos are static illustrations on how the web app operates; whole source code is located on github, and accessible through 'Source' buttons
+        </p>
+
         {/* Projects Grid (3 horizontal cards) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project) => (
