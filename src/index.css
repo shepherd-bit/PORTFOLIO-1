@@ -31,3 +31,10 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #C778DD;
 }
+
+/* Scale everything down 15% on mobile for a neat, organized look */
+@media (max-width: 768px) {
+  body {
+    zoom: 0.85;
+  }
+}
