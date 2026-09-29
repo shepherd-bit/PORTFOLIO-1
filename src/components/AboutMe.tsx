@@ -76,81 +76,12 @@ export function AboutMe({ onPricingClick }: AboutMeProps) {
                 <DotGrid rows={4} cols={4} color="#C778DD" />
               </div>
 
-              {/* Stylized Developer Sitting / Typing Silhouette */}
-              <div className="relative z-10 w-56 h-64 flex items-center justify-center">
-                <svg
-                  viewBox="0 0 240 260"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.7)]"
-                >
-                  <defs>
-                    <linearGradient id="coderBody" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#1E2228" />
-                      <stop offset="100%" stopColor="#13161A" />
-                    </linearGradient>
-                  </defs>
-
-                  {/* Sitting / Focused Coder Silhouette */}
-                  {/* Head / Beanie / Hood */}
-                  <path
-                    d="M95 90 C90 50, 150 50, 145 90 C143 105, 138 115, 120 115 C102 115, 97 105, 95 90 Z"
-                    fill="#15181D"
-                    stroke="#C778DD"
-                    strokeWidth="1.5"
-                  />
-
-                  {/* Shoulders & Torso */}
-                  <path
-                    d="M60 210 C65 155, 90 130, 120 130 C150 130, 175 155, 180 210 Z"
-                    fill="url(#coderBody)"
-                    stroke="#3E4451"
-                    strokeWidth="1.5"
-                  />
-
-                  {/* Arms leaning forward */}
-                  <path
-                    d="M75 160 L50 205 L80 215 L100 180 Z"
-                    fill="#1A1D23"
-                    stroke="#3E4451"
-                    strokeWidth="1.2"
-                  />
-                  <path
-                    d="M165 160 L190 205 L160 215 L140 180 Z"
-                    fill="#1A1D23"
-                    stroke="#3E4451"
-                    strokeWidth="1.2"
-                  />
-
-                  {/* Hands typing / glowing screen reflection */}
-                  <path
-                    d="M80 215 L120 205 L160 215 L150 225 L90 225 Z"
-                    fill="#282C33"
-                    stroke="#C778DD"
-                    strokeWidth="1.2"
-                  />
-
-                  {/* Laptop screen lid angled */}
-                  <polygon
-                    points="70,225 170,225 155,190 85,190"
-                    fill="#181B20"
-                    stroke="#ABB2BF"
-                    strokeWidth="1"
-                  />
-
-                  {/* Screen Glow */}
-                  <polygon
-                    points="88,194 152,194 163,222 77,222"
-                    fill="#C778DD"
-                    opacity="0.15"
-                  />
-
-                  {/* Cyber code lines on screen */}
-                  <line x1="95" y1="202" x2="140" y2="202" stroke="#C778DD" strokeWidth="1.5" />
-                  <line x1="95" y1="208" x2="130" y2="208" stroke="#ABB2BF" strokeWidth="1.5" />
-                  <line x1="95" y1="214" x2="145" y2="214" stroke="#98C379" strokeWidth="1.5" />
-                </svg>
-              </div>
+              {/* Profile Picture */}
+              <img
+                src="./about-me/lincon.png"
+                alt="Titus - Full Stack Web Developer"
+                className="relative z-10 w-full max-w-sm h-auto drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]"
+              />
 
             </div>
           </div>
