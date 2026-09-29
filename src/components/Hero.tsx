@@ -16,7 +16,7 @@ export function Hero({ onContactClick }: HeroProps) {
           <div className="lg:col-span-7 space-y-6">
             <h1 className="text-2xl sm:text-3xl md:text-[2.1rem] font-bold text-white leading-tight tracking-tight">
               Hi, I am <span className="text-white">Titus</span>, a{' '}
-              <span className="text-[#C778DD]">full Stack web developer</span>.{' '}
+              <span className="text-[#C778DD]">Full Stack Web Engineer</span>.{' '}
               <br className="hidden sm:inline" />
               Ready for{' '}
               <span className="text-[#C778DD]">Team</span> or{' '}

@@ -21,17 +21,17 @@ const projectsData: Project[] = [
     tags: ['React 18', 'Vite', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     liveUrl: 'https://noir-estates-1.vercel.app/',
     sourceUrl: 'https://github.com/shepherd-bit/Noir-Estates',
-    imageUrl: '', // Insert your image path here
+    imageUrl: './project-thumbnails/noir.PNG', 
   },
   {
     id: '2',
     title: 'Nova',
-    category: 'Real Estate',
+    category: 'Ecommerce',
     description: 'A production-ready, direct-to-consumer e-commerce starter for selling cutting edge tech consumer products.',
     tags: ['Turborepo', 'Medusa.js', 'Node.js', 'PostgreSQL', 'React 19', 'TypeScript', 'Tailwind CSS', 'Stripe'],
     liveUrl: 'https://nova-1-wslo.vercel.app/',
     sourceUrl: 'https://github.com/shepherd-bit/Nova_',
-    imageUrl: '', // Insert your image path here
+    imageUrl: './project-thumbnails/nova.PNG', 
   },
   {
     id: '3',
@@ -41,7 +41,7 @@ const projectsData: Project[] = [
     tags: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Google GenAI', 'Express', 'Strapi', 'PostgreSQL'],
     liveUrl: 'https://vortex-blogs-1-esum.vercel.app/',
     sourceUrl: 'https://github.com/shepherd-bit/Vortex__Blogs',
-    imageUrl: '', // Insert your image path here
+    imageUrl: './project-thumbnails/vortex.PNG', 
   },
 ];
 
