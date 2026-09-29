@@ -1,5 +1,27 @@
-import { skillCategories } from '../data/portfolioData';
 import { DotGrid } from './DotGrid';
+
+const skillCategories = [
+  {
+    title: 'Languages',
+    skills: ['TypeScript', 'Lua', 'Python', 'JavaScript', 'HTML', 'CSS', 'SCSS'],
+  },
+  {
+    title: 'Databases',
+    skills: ['PostgreSQL', 'MongoDB', 'Supabase', 'Redis', 'Prisma'],
+  },
+  {
+    title: 'Tools',
+    skills: ['VSCode', 'Neovim', 'Figma', 'Arch', 'Git', 'Font Awesome', 'Vite', 'Docker', 'Render', 'Vercel', 'Strapi'],
+  },
+  {
+    title: 'Other',
+    skills: ['HTML', 'CSS', 'EJS', 'SCSS', 'REST'],
+  },
+  {
+    title: 'Frameworks',
+    skills: ['React', 'Vue', 'Disnake', 'Flask', 'Express.js', 'Next.js', 'Medusa.js', 'Tailwind CSS', 'Framer Motion', 'Turborepo'],
+  },
+];
 
 export function Skills() {
   const languages = skillCategories.find((c) => c.title === 'Languages');
