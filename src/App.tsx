@@ -13,16 +13,11 @@ import { AboutMe } from './components/AboutMe';
 import { Experience } from './components/Experience';
 import { Contacts } from './components/Contacts';
 import { Footer } from './components/Footer';
-import { PriceEstimatorModal } from './components/PriceEstimatorModal';
 import { ResumeModal } from './components/ResumeModal';
-import { ProjectModal } from './components/ProjectModal';
-import { Project } from './types';
 import { portfolioInfo } from './data/portfolioData';
 
 export default function App() {
-  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const showToast = (message: string) => {
@@ -75,13 +70,13 @@ export default function App() {
           <Hero onContactClick={() => scrollToSection('contacts')} />
 
           {/* #projects Section */}
-          <Projects onSelectProject={(project) => setSelectedProject(project)} />
+          <Projects />
 
           {/* #skills Section */}
           <Skills />
 
           {/* #about-me Section */}
-          <AboutMe onPricingClick={() => setIsPricingModalOpen(true)} />
+          <AboutMe />
 
           {/* #experience Section */}
           <Experience />
@@ -95,20 +90,9 @@ export default function App() {
       </div>
 
       {/* Interactive Modals */}
-      <PriceEstimatorModal
-        isOpen={isPricingModalOpen}
-        onClose={() => setIsPricingModalOpen(false)}
-        onSelectTierForContact={handleSelectTierForContact}
-      />
-
       <ResumeModal
         isOpen={isResumeModalOpen}
         onClose={() => setIsResumeModalOpen(false)}
-      />
-
-      <ProjectModal
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
       />
 
       {/* Quick Toast Notification */}
