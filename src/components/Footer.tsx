@@ -1,4 +1,4 @@
-import { ArrowUp, Github, Disc as Discord, Mail } from 'lucide-react';
+import { ArrowUp, Github, Mail } from 'lucide-react';
 import { portfolioInfo } from '../data/portfolioData';
 
 export function Footer() {
@@ -20,12 +20,6 @@ export function Footer() {
               <span className="font-bold text-white tracking-wider">
                 {portfolioInfo.name}
               </span>
-              <a
-                href={`mailto:${portfolioInfo.contacts.domainEmail}`}
-                className="text-xs text-[#ABB2BF] hover:text-[#C778DD] transition-colors font-mono ml-2"
-              >
-                {portfolioInfo.contacts.domainEmail}
-              </a>
             </div>
             <p className="text-xs text-[#ABB2BF]/80 max-w-sm">
               {portfolioInfo.role} equipped and ready for team or solo projects.
@@ -37,7 +31,7 @@ export function Footer() {
             <span className="text-xs text-white font-medium">Media:</span>
             <div className="flex items-center gap-3">
               <a
-                href="https://github.com/titusaoluoch"
+                href="https://github.com/shepherd-bit"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
@@ -46,7 +40,7 @@ export function Footer() {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href={`mailto:${portfolioInfo.contacts.primaryEmail}`}
+                href="mailto:titusaoluoch@gmail.com"
                 aria-label="Email"
                 className="hover:text-[#C778DD] transition-colors p-1"
               >
