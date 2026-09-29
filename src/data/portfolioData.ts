@@ -17,12 +17,12 @@ export const portfolioInfo = {
   quote: "Look, AI can build stuff. But those ruthless industry level details is where I come in - Sign Me Up!!",
   quoteAuthor: "- Eng. Me",
   aboutMe: {
-    salutation: "One for whoever is reading this:",
+    salutation: "To whom it may concern:",
     paragraphs: [
       "Enrolled for a Bachelor of Science, Computer Science at The East African University in 2018. Spent 6 years studying, but missing exams (financial difficulties - most people in my country have them, no big deal).",
       "After 6 years, I left school without my graduation papers, because I hadn’t paid for most of my exams. Now I decided to make a name for myself in freelance world by building stuff that help people achieve their goals, and here I am. I am deeply committed to prove myself as a productive force."
     ],
-    ctaText: "Thanks for Knowing Me - Click HERE for a Price ->"
+    ctaText: "Thanks for knowing me"
   },
   contacts: {
     availability: "I’m am on my computer and phone 24/7 - Anytime and you will find me. Reach out for any Freelance opportunity, Full or Part-time On-Premise or Remote position. I am flexible if our negotiations go well",
