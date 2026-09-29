@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { Header } from './components/Header';
 import { SocialSidebar } from './components/SocialSidebar';
 import { Hero } from './components/Hero';
-import { QuoteBox } from './components/QuoteBox';
 import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { AboutMe } from './components/AboutMe';
@@ -74,9 +73,6 @@ export default function App() {
         <main>
           {/* Hero Section */}
           <Hero onContactClick={() => scrollToSection('contacts')} />
-
-          {/* Signature Quote */}
-          <QuoteBox />
 
           {/* #projects Section */}
           <Projects onSelectProject={(project) => setSelectedProject(project)} />
