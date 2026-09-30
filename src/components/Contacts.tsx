@@ -1,7 +1,8 @@
 import { useState, FormEvent } from 'react';
-import { Phone, Mail, Send, CheckCircle2 } from 'lucide-react';
+import { Phone, Mail, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { portfolioInfo } from '../data/portfolioData';
 import { DotGrid } from './DotGrid';
+import emailjs from '@emailjs/browser';
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -11,8 +12,13 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
+const EMAILJS_SERVICE_ID = 'service_lq0t2qy';
+const EMAILJS_TEMPLATE_ID = 'template_at2i0j6';
+const EMAILJS_PUBLIC_KEY = '7KLtJG1OSLVhUZxjp';
+
 export function Contacts() {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -24,19 +30,32 @@ export function Contacts() {
   const phoneNumber = '+254112470926';
   const whatsappNumber = '254112470926';
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
-    
-    setFormSubmitted(true);
-    setTimeout(() => {
-      const mailtoLink = `mailto:${directEmail}?subject=${encodeURIComponent(
-        formData.title || 'Freelance Inquiry from ' + formData.name
-      )}&body=${encodeURIComponent(
-        `Hi Titus,\n\n${formData.message}\n\nFrom: ${formData.name} (${formData.email})`
-      )}`;
-      window.location.href = mailtoLink;
-    }, 800);
+
+    setIsSending(true);
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          title: formData.title || 'Portfolio Inquiry',
+          message: formData.message,
+        },
+        {
+          publicKey: EMAILJS_PUBLIC_KEY,
+        }
+      );
+      setFormSubmitted(true);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const contactMethods = [
@@ -105,9 +124,9 @@ export function Contacts() {
                    <div className="w-10 h-10 border border-emerald-400 bg-emerald-500/10 flex items-center justify-center text-emerald-400">
                      <CheckCircle2 className="w-6 h-6" />
                    </div>
-                   <h4 className="text-white font-bold text-base">Inquiry Prepared!</h4>
+                   <h4 className="text-white font-bold text-base">Message Sent!</h4>
                    <p className="text-xs sm:text-sm text-[#ABB2BF] max-w-sm">
-                     Opening your default email client to send message to{' '}
+                     Your inquiry has been sent to{' '}
                      <span className="text-[#C778DD]">{directEmail}</span>.
                    </p>
                    <button
@@ -129,6 +148,7 @@ export function Contacts() {
                        </label>
                        <input
                          type="text"
+                         name="name"
                          required
                          value={formData.name}
                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -142,6 +162,7 @@ export function Contacts() {
                        </label>
                        <input
                          type="email"
+                         name="email"
                          required
                          value={formData.email}
                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -157,6 +178,7 @@ export function Contacts() {
                      </label>
                      <input
                        type="text"
+                       name="title"
                        value={formData.title}
                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                        placeholder="e.g. Fullstack Web App, Frontend Feature, API Integration"
@@ -169,6 +191,7 @@ export function Contacts() {
                        Message <span className="text-[#C778DD]">*</span>
                      </label>
                      <textarea
+                       name="message"
                        required
                        rows={3}
                        value={formData.message}
@@ -181,10 +204,15 @@ export function Contacts() {
                    <div className="flex justify-end pt-1">
                      <button
                        type="submit"
-                       className="inline-flex items-center gap-2 border border-[#C778DD] text-white px-5 py-2.5 font-medium hover:bg-[#C778DD]/20 transition-colors cursor-pointer"
+                       disabled={isSending}
+                       className="inline-flex items-center gap-2 border border-[#C778DD] text-white px-5 py-2.5 font-medium hover:bg-[#C778DD]/20 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                      >
-                       <Send className="w-3.5 h-3.5" />
-                       <span>Send message -&gt;</span>
+                       {isSending ? (
+                         <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                       ) : (
+                         <Send className="w-3.5 h-3.5" />
+                       )}
+                       <span>{isSending ? 'Sending...' : 'Send message ->'}</span>
                      </button>
                    </div>
                  </form>
