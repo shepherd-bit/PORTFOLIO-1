@@ -64,18 +64,21 @@ export function Contacts() {
       href: `tel:${phoneNumber}`,
       icon: Phone,
       color: 'text-[#C778DD]',
+      isExternal: false,
     },
     {
       name: 'WhatsApp',
       href: `https://wa.me/${whatsappNumber}`,
       icon: WhatsAppIcon,
       color: 'text-[#98C379]',
+      isExternal: true,
     },
     {
       name: 'Email',
       href: `mailto:${directEmail}`,
       icon: Mail,
       color: 'text-[#C778DD]',
+      isExternal: false,
     },
   ];
 
@@ -220,11 +223,11 @@ export function Contacts() {
              </div>
            </div>
 
-           {/* Right Column: "Message me here" Box */}
+           {/* Right Column: "Instant Direct Message/Call" Box */}
            <div className="lg:col-span-5">
              <div className="border border-[#ABB2BF] bg-[#282C33] p-5 sm:p-6 space-y-4">
                <h3 className="text-white font-semibold text-base sm:text-lg border-b border-[#ABB2BF]/30 pb-3">
-                 Message me here
+                 Instant Direct Message/Call
                </h3>
 
                {contactMethods.map((method) => {
@@ -233,8 +236,7 @@ export function Contacts() {
                    <a
                      key={method.name}
                      href={method.href}
-                     target="_blank"
-                     rel="noreferrer"
+                     {...(method.isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
                      className="flex items-center gap-3 text-sm text-[#ABB2BF] hover:text-white transition-colors group"
                    >
                      <Icon className={`w-4 h-4 ${method.color}`} />
