@@ -14,6 +14,7 @@ import { Experience } from './components/Experience';
 import { Contacts } from './components/Contacts';
 import { Footer } from './components/Footer';
 import { ResumeModal } from './components/ResumeModal';
+import { IntroAnimation } from './components/IntroAnimation';
 import { portfolioInfo } from './data/portfolioData';
 
 export default function App() {
@@ -62,7 +63,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#282C33] text-[#ABB2BF] font-mono selection:bg-[#C778DD] selection:text-white relative">
-      
+
+      {/* Intro Animation Overlay */}
+      <IntroAnimation />
+
       {/* Fixed Left Social Links Sidebar (Desktop) */}
       <SocialSidebar
         onDiscordClick={handleDiscordClick}
