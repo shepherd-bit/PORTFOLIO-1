@@ -1,4 +1,4 @@
-import { Github, Mail } from 'lucide-react';
+import { Github, Instagram } from 'lucide-react';
 
 function PeerlistIcon({ className }: { className?: string }) {
   return (
@@ -25,9 +25,9 @@ const socials = [
     icon: PeerlistIcon,
   },
   {
-    name: 'Email',
-    href: 'mailto:titusaoluoch@gmail.com',
-    icon: Mail,
+    name: 'Instagram',
+    href: 'https://www.instagram.com/___.shepherd.___?stkn=MWtqY2NjcGVzdmNvdw==',
+    icon: Instagram,
   },
 ];
 
