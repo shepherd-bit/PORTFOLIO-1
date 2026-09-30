@@ -20,7 +20,7 @@ export function IntroAnimation() {
       const timer = setTimeout(() => {
         setShowCover(false);
         document.body.style.overflow = '';
-      }, 5500); // roll up at 9s total (3.5s typing + 5.5s delay)
+      }, 2500); // roll up at 6s total (3.5s typing + 2.5s delay)
       return () => {
         clearTimeout(timer);
         document.body.style.overflow = '';
