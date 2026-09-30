@@ -49,6 +49,17 @@ export default function App() {
     scrollToSection('contacts');
   };
 
+  const handleResumeClick = () => {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
+    if (isMobile) {
+      window.open('/My-Resume.pdf', '_blank');
+    } else {
+      setIsResumeModalOpen(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#282C33] text-[#ABB2BF] font-mono selection:bg-[#C778DD] selection:text-white relative">
       
@@ -62,7 +73,7 @@ export default function App() {
       <div>
         
         {/* Sticky Header Navigation */}
-        <Header onResumeClick={() => setIsResumeModalOpen(true)} />
+        <Header onResumeClick={handleResumeClick} />
 
         {/* Main Content Sections */}
         <main>
