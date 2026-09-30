@@ -60,200 +60,200 @@ export function Contacts() {
           <div className="h-[1px] bg-[#C778DD] flex-grow max-w-xs opacity-80" />
         </div>
 
+        {/* Description */}
+        <p className="text-sm sm:text-base text-[#ABB2BF] leading-relaxed mb-8">
+          {portfolioInfo.contacts.availability}
+        </p>
+
         {/* Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          
-          {/* Left Column: Description & Interactive Message Form */}
-          <div className="lg:col-span-7 space-y-6">
-            <p className="text-sm sm:text-base text-[#ABB2BF] leading-relaxed">
-              {portfolioInfo.contacts.availability}
-            </p>
 
-            {/* Direct Message Form */}
-            <div className="border border-[#ABB2BF]/60 bg-[#282C33] p-5 sm:p-6 space-y-4">
-              <div className="flex items-center justify-between border-b border-[#ABB2BF]/30 pb-3">
-                <span className="text-white font-medium text-sm flex items-center gap-2">
-                  <span className="text-[#C778DD] font-mono">&gt;</span> Quick Inquiry Dispatch
-                </span>
-                <span className="text-[11px] text-[#ABB2BF] font-mono">Status: Direct to inbox</span>
-              </div>
+           {/* Left Column: Interactive Message Form */}
+           <div className="lg:col-span-7">
+             <div className="border border-[#ABB2BF]/60 bg-[#282C33] p-5 sm:p-6 space-y-4">
+               <div className="flex items-center justify-between border-b border-[#ABB2BF]/30 pb-3">
+                 <span className="text-white font-medium text-sm flex items-center gap-2">
+                   <span className="text-[#C778DD] font-mono">&gt;</span> Quick Inquiry Dispatch
+                 </span>
+                 <span className="text-[11px] text-[#ABB2BF] font-mono">Status: Direct to inbox</span>
+               </div>
 
-              {formSubmitted ? (
-                <div className="py-6 flex flex-col items-center text-center space-y-3">
-                  <div className="w-10 h-10 border border-emerald-400 bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-                    <CheckCircle2 className="w-6 h-6" />
-                  </div>
-                  <h4 className="text-white font-bold text-base">Inquiry Prepared!</h4>
-                  <p className="text-xs sm:text-sm text-[#ABB2BF] max-w-sm">
-                    Opening your default email client to send message to{' '}
-                    <span className="text-[#C778DD]">{directEmail}</span>.
-                  </p>
-                  <button
-                    onClick={() => {
-                      setFormSubmitted(false);
-                      setFormData({ name: '', email: '', title: '', message: '' });
-                    }}
-                    className="text-xs text-[#C778DD] hover:underline cursor-pointer pt-2"
-                  >
-                    Send another message
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-[#ABB2BF] text-xs mb-1 font-mono">
-                        Name <span className="text-[#C778DD]">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder="Your Name / Company"
-                        className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[#ABB2BF] text-xs mb-1 font-mono">
-                        Email <span className="text-[#C778DD]">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="you@domain.com"
-                        className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
-                      />
-                    </div>
-                  </div>
+               {formSubmitted ? (
+                 <div className="py-6 flex flex-col items-center text-center space-y-3">
+                   <div className="w-10 h-10 border border-emerald-400 bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                     <CheckCircle2 className="w-6 h-6" />
+                   </div>
+                   <h4 className="text-white font-bold text-base">Inquiry Prepared!</h4>
+                   <p className="text-xs sm:text-sm text-[#ABB2BF] max-w-sm">
+                     Opening your default email client to send message to{' '}
+                     <span className="text-[#C778DD]">{directEmail}</span>.
+                   </p>
+                   <button
+                     onClick={() => {
+                       setFormSubmitted(false);
+                       setFormData({ name: '', email: '', title: '', message: '' });
+                     }}
+                     className="text-xs text-[#C778DD] hover:underline cursor-pointer pt-2"
+                   >
+                     Send another message
+                   </button>
+                 </div>
+               ) : (
+                 <form onSubmit={handleSubmit} className="space-y-4 text-xs sm:text-sm">
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                     <div>
+                       <label className="block text-[#ABB2BF] text-xs mb-1 font-mono">
+                         Name <span className="text-[#C778DD]">*</span>
+                       </label>
+                       <input
+                         type="text"
+                         required
+                         value={formData.name}
+                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                         placeholder="Your Name / Company"
+                         className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
+                       />
+                     </div>
+                     <div>
+                       <label className="block text-[#ABB2BF] text-xs mb-1 font-mono">
+                         Email <span className="text-[#C778DD]">*</span>
+                       </label>
+                       <input
+                         type="email"
+                         required
+                         value={formData.email}
+                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                         placeholder="you@domain.com"
+                         className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
+                       />
+                     </div>
+                   </div>
 
-                  <div>
-                    <label className="block text-[#ABB2BF] text-xs mb-1 font-mono">
-                      Subject / Project Scope
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.title}
-                      onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      placeholder="e.g. Fullstack Web App, Frontend Feature, API Integration"
-                      className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
-                    />
-                  </div>
+                   <div>
+                     <label className="block text-[#ABB2BF] text-xs mb-1 font-mono">
+                       Subject / Project Scope
+                     </label>
+                     <input
+                       type="text"
+                       value={formData.title}
+                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                       placeholder="e.g. Fullstack Web App, Frontend Feature, API Integration"
+                       className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
+                     />
+                   </div>
 
-                  <div>
-                    <label className="block text-[#ABB2BF] text-xs mb-1 font-mono">
-                      Message <span className="text-[#C778DD]">*</span>
-                    </label>
-                    <textarea
-                      required
-                      rows={3}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="Tell me about your requirements, timeline, and goals..."
-                      className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors resize-none"
-                    />
-                  </div>
+                   <div>
+                     <label className="block text-[#ABB2BF] text-xs mb-1 font-mono">
+                       Message <span className="text-[#C778DD]">*</span>
+                     </label>
+                     <textarea
+                       required
+                       rows={3}
+                       value={formData.message}
+                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                       placeholder="Tell me about your requirements, timeline, and goals..."
+                       className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors resize-none"
+                     />
+                   </div>
 
-                  <div className="flex justify-end pt-1">
-                    <button
-                      type="submit"
-                      className="inline-flex items-center gap-2 border border-[#C778DD] text-white px-5 py-2.5 font-medium hover:bg-[#C778DD]/20 transition-colors cursor-pointer"
-                    >
-                      <Send className="w-3.5 h-3.5" />
-                      <span>Send message -&gt;</span>
-                    </button>
-                  </div>
-                </form>
-              )}
-            </div>
-          </div>
+                   <div className="flex justify-end pt-1">
+                     <button
+                       type="submit"
+                       className="inline-flex items-center gap-2 border border-[#C778DD] text-white px-5 py-2.5 font-medium hover:bg-[#C778DD]/20 transition-colors cursor-pointer"
+                     >
+                       <Send className="w-3.5 h-3.5" />
+                       <span>Send message -&gt;</span>
+                     </button>
+                   </div>
+                 </form>
+               )}
+             </div>
+           </div>
 
-          {/* Right Column: "Message me here" Box */}
-          <div className="lg:col-span-5">
-            <div className="border border-[#ABB2BF] bg-[#282C33] p-5 sm:p-6 space-y-4">
-              <h3 className="text-white font-semibold text-base sm:text-lg border-b border-[#ABB2BF]/30 pb-3">
-                Message me here
-              </h3>
+           {/* Right Column: "Message me here" Box */}
+           <div className="lg:col-span-5">
+             <div className="border border-[#ABB2BF] bg-[#282C33] p-5 sm:p-6 space-y-4">
+               <h3 className="text-white font-semibold text-base sm:text-lg border-b border-[#ABB2BF]/30 pb-3">
+                 Message me here
+               </h3>
 
-              {/* Discord row */}
-              <div className="flex items-center justify-between gap-3 text-sm">
-                <div className="flex items-center gap-2 text-[#ABB2BF]">
-                  <MessageSquare className="w-4 h-4 text-[#C778DD]" />
-                  <span className="font-mono">{portfolioInfo.contacts.discord}</span>
-                </div>
-                <button
-                  onClick={() => handleCopy(portfolioInfo.contacts.discord, 'discord')}
-                  aria-label="Copy Discord handle"
-                  className="p-1.5 border border-[#ABB2BF]/40 hover:border-[#C778DD] hover:text-white text-[#ABB2BF] transition-colors cursor-pointer"
-                  title="Copy Discord"
-                >
-                  {copiedField === 'discord' ? (
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  ) : (
-                    <Copy className="w-3.5 h-3.5" />
-                  )}
-                </button>
-              </div>
+               {/* Discord row */}
+               <div className="flex items-center justify-between gap-3 text-sm">
+                 <div className="flex items-center gap-2 text-[#ABB2BF]">
+                   <MessageSquare className="w-4 h-4 text-[#C778DD]" />
+                   <span className="font-mono">{portfolioInfo.contacts.discord}</span>
+                 </div>
+                 <button
+                   onClick={() => handleCopy(portfolioInfo.contacts.discord, 'discord')}
+                   aria-label="Copy Discord handle"
+                   className="p-1.5 border border-[#ABB2BF]/40 hover:border-[#C778DD] hover:text-white text-[#ABB2BF] transition-colors cursor-pointer"
+                   title="Copy Discord"
+                 >
+                   {copiedField === 'discord' ? (
+                     <Check className="w-3.5 h-3.5 text-emerald-400" />
+                   ) : (
+                     <Copy className="w-3.5 h-3.5" />
+                   )}
+                 </button>
+               </div>
 
-              {/* Primary Email row */}
-              <div className="flex items-center justify-between gap-3 text-sm">
-                <div className="flex items-center gap-2 text-[#ABB2BF]">
-                  <Mail className="w-4 h-4 text-[#C778DD]" />
-                  <a
-                    href={`mailto:${portfolioInfo.contacts.primaryEmail}`}
-                    className="font-mono hover:text-white hover:underline transition-colors truncate"
-                  >
-                    {portfolioInfo.contacts.primaryEmail}
-                  </a>
-                </div>
-                <button
-                  onClick={() => handleCopy(portfolioInfo.contacts.primaryEmail, 'email')}
-                  aria-label="Copy primary email"
-                  className="p-1.5 border border-[#ABB2BF]/40 hover:border-[#C778DD] hover:text-white text-[#ABB2BF] transition-colors cursor-pointer"
-                  title="Copy Email"
-                >
-                  {copiedField === 'email' ? (
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  ) : (
-                    <Copy className="w-3.5 h-3.5" />
-                  )}
-                </button>
-              </div>
+               {/* Primary Email row */}
+               <div className="flex items-center justify-between gap-3 text-sm">
+                 <div className="flex items-center gap-2 text-[#ABB2BF]">
+                   <Mail className="w-4 h-4 text-[#C778DD]" />
+                   <a
+                     href={`mailto:${portfolioInfo.contacts.primaryEmail}`}
+                     className="font-mono hover:text-white hover:underline transition-colors truncate"
+                   >
+                     {portfolioInfo.contacts.primaryEmail}
+                   </a>
+                 </div>
+                 <button
+                   onClick={() => handleCopy(portfolioInfo.contacts.primaryEmail, 'email')}
+                   aria-label="Copy primary email"
+                   className="p-1.5 border border-[#ABB2BF]/40 hover:border-[#C778DD] hover:text-white text-[#ABB2BF] transition-colors cursor-pointer"
+                   title="Copy Email"
+                 >
+                   {copiedField === 'email' ? (
+                     <Check className="w-3.5 h-3.5 text-emerald-400" />
+                   ) : (
+                     <Copy className="w-3.5 h-3.5" />
+                   )}
+                 </button>
+               </div>
 
-              {/* Direct Gmail row */}
-              <div className="flex items-center justify-between gap-3 text-sm border-t border-[#ABB2BF]/20 pt-3">
-                <div className="flex items-center gap-2 text-[#ABB2BF]">
-                  <Mail className="w-4 h-4 text-[#98C379]" />
-                  <a
-                    href={`mailto:${directEmail}`}
-                    className="font-mono hover:text-white hover:underline transition-colors truncate text-xs sm:text-sm"
-                  >
-                    {directEmail}
-                  </a>
-                </div>
-                <button
-                  onClick={() => handleCopy(directEmail, 'gmail')}
-                  aria-label="Copy Gmail address"
-                  className="p-1.5 border border-[#ABB2BF]/40 hover:border-[#C778DD] hover:text-white text-[#ABB2BF] transition-colors cursor-pointer"
-                  title="Copy Gmail"
-                >
-                  {copiedField === 'gmail' ? (
-                    <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  ) : (
-                    <Copy className="w-3.5 h-3.5" />
-                  )}
-                </button>
-              </div>
+               {/* Direct Gmail row */}
+               <div className="flex items-center justify-between gap-3 text-sm border-t border-[#ABB2BF]/20 pt-3">
+                 <div className="flex items-center gap-2 text-[#ABB2BF]">
+                   <Mail className="w-4 h-4 text-[#98C379]" />
+                   <a
+                     href={`mailto:${directEmail}`}
+                     className="font-mono hover:text-white hover:underline transition-colors truncate text-xs sm:text-sm"
+                   >
+                     {directEmail}
+                   </a>
+                 </div>
+                 <button
+                   onClick={() => handleCopy(directEmail, 'gmail')}
+                   aria-label="Copy Gmail address"
+                   className="p-1.5 border border-[#ABB2BF]/40 hover:border-[#C778DD] hover:text-white text-[#ABB2BF] transition-colors cursor-pointer"
+                   title="Copy Gmail"
+                 >
+                   {copiedField === 'gmail' ? (
+                     <Check className="w-3.5 h-3.5 text-emerald-400" />
+                   ) : (
+                     <Copy className="w-3.5 h-3.5" />
+                   )}
+                 </button>
+               </div>
 
-              {/* Quick note badge */}
-              <div className="pt-2 text-[11px] text-[#ABB2BF]/70 font-mono flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
-                <span>Available for immediate contracts & proposals</span>
-              </div>
-            </div>
-          </div>
+               {/* Quick note badge */}
+               <div className="pt-2 text-[11px] text-[#ABB2BF]/70 font-mono flex items-center gap-1.5">
+                 <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+                 <span>Available for immediate contracts & proposals</span>
+               </div>
+             </div>
+           </div>
 
         </div>
 
