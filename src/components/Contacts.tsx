@@ -13,6 +13,8 @@ export function Contacts() {
     message: ''
   });
 
+  const directEmail = 'titusaoluoch@gmail.com';
+
   const handleCopy = (text: string, field: string) => {
     navigator.clipboard.writeText(text);
     setCopiedField(field);
@@ -26,8 +28,8 @@ export function Contacts() {
     // Simulate sending message or preparing mailto
     setFormSubmitted(true);
     setTimeout(() => {
-      // Create mailto fallback link
-      const mailtoLink = `mailto:${portfolioInfo.contacts.directEmail}?subject=${encodeURIComponent(
+      // Create mailto fallback link targeting your direct email
+      const mailtoLink = `mailto:${directEmail}?subject=${encodeURIComponent(
         formData.title || 'Freelance Inquiry from ' + formData.name
       )}&body=${encodeURIComponent(
         `Hi Titus,\n\n${formData.message}\n\nFrom: ${formData.name} (${formData.email})`
@@ -84,7 +86,7 @@ export function Contacts() {
                   <h4 className="text-white font-bold text-base">Inquiry Prepared!</h4>
                   <p className="text-xs sm:text-sm text-[#ABB2BF] max-w-sm">
                     Opening your default email client to send message to{' '}
-                    <span className="text-[#C778DD]">{portfolioInfo.contacts.directEmail}</span>.
+                    <span className="text-[#C778DD]">{directEmail}</span>.
                   </p>
                   <button
                     onClick={() => {
@@ -135,7 +137,7 @@ export function Contacts() {
                       type="text"
                       value={formData.title}
                       onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                      placeholder="e.g. Python Backend API, Fullstack Website, Discord Bot"
+                      placeholder="e.g. Fullstack Web App, Frontend Feature, API Integration"
                       className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
                     />
                   </div>
@@ -168,7 +170,7 @@ export function Contacts() {
             </div>
           </div>
 
-          {/* Right Column: "Message me here" Box (as in screenshot) */}
+          {/* Right Column: "Message me here" Box */}
           <div className="lg:col-span-5">
             <div className="border border-[#ABB2BF] bg-[#282C33] p-5 sm:p-6 space-y-4">
               <h3 className="text-white font-semibold text-base sm:text-lg border-b border-[#ABB2BF]/30 pb-3">
@@ -220,19 +222,19 @@ export function Contacts() {
                 </button>
               </div>
 
-              {/* Direct Gmail row (matching user's email) */}
+              {/* Direct Gmail row */}
               <div className="flex items-center justify-between gap-3 text-sm border-t border-[#ABB2BF]/20 pt-3">
                 <div className="flex items-center gap-2 text-[#ABB2BF]">
                   <Mail className="w-4 h-4 text-[#98C379]" />
                   <a
-                    href={`mailto:${portfolioInfo.contacts.directEmail}`}
+                    href={`mailto:${directEmail}`}
                     className="font-mono hover:text-white hover:underline transition-colors truncate text-xs sm:text-sm"
                   >
-                    {portfolioInfo.contacts.directEmail}
+                    {directEmail}
                   </a>
                 </div>
                 <button
-                  onClick={() => handleCopy(portfolioInfo.contacts.directEmail, 'gmail')}
+                  onClick={() => handleCopy(directEmail, 'gmail')}
                   aria-label="Copy Gmail address"
                   className="p-1.5 border border-[#ABB2BF]/40 hover:border-[#C778DD] hover:text-white text-[#ABB2BF] transition-colors cursor-pointer"
                   title="Copy Gmail"
