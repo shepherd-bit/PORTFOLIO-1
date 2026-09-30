@@ -18,7 +18,7 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm">
       <div
-        className="relative w-full max-w-4xl border border-[#C778DD] bg-[#282C33] shadow-2xl my-6 flex flex-col max-h-[90vh]"
+        className="relative w-full max-w-6xl border border-[#C778DD] bg-[#282C33] shadow-2xl my-6 flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header toolbar */}
