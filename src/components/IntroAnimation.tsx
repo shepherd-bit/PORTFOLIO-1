@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 const TITLE = '</Titus>';
 const QUOTE = 'An Idiot in Motion is faster than a Genius at rest';
 const ATTRIBUTION = "- Newton's 4th Law of Motion";
-const TYPING_DURATION = 7000; // 7 seconds
+const TYPING_DURATION = 3500; // 3.5 seconds (twice as fast)
 const TOTAL_CHARS = TITLE.length + QUOTE.length + ATTRIBUTION.length;
 const CHAR_INTERVAL = TYPING_DURATION / TOTAL_CHARS;
 
@@ -20,7 +20,7 @@ export function IntroAnimation() {
       const timer = setTimeout(() => {
         setShowCover(false);
         document.body.style.overflow = '';
-      }, 1200);
+      }, 5500); // roll up at 9s total (3.5s typing + 5.5s delay)
       return () => {
         clearTimeout(timer);
         document.body.style.overflow = '';
