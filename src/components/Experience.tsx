@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { FileCode, FolderTree, Terminal, Calendar } from 'lucide-react';
 import { experienceData as originalExperienceData } from '../data/portfolioData';
 
@@ -31,23 +32,35 @@ export function Experience() {
   const currentFilename = getFilename(activeItem.role);
 
   return (
-    <section id="experience" className="py-14 md:py-20 relative">
+    <section id="experience" className="py-14 md:py-20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex items-center gap-4 mb-12">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-4 mb-12"
+        >
           <div className="flex items-center gap-1">
-            <span className="text-2xl sm:text-3xl font-bold text-[#C778DD]">#</span>
+            <span className="text-2xl sm:text-3xl font-bold text-[#C778DD] drop-shadow-[0_0_10px_rgba(199,120,221,0.5)]">#</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-wide">
               experience
             </h2>
           </div>
           {/* Horizontal Accent Line */}
-          <div className="h-[1px] bg-[#C778DD] flex-grow max-w-xs opacity-80" />
-        </div>
+          <div className="h-[1px] bg-[#C778DD] flex-grow max-w-xs opacity-80 shadow-[0_0_8px_rgba(199,120,221,0.4)]" />
+        </motion.div>
 
         {/* Workspace Code Editor Container */}
-        <div className="border border-[#ABB2BF]/30 bg-[#282C33] rounded-xl overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="border border-[#ABB2BF]/30 bg-[#282C33] rounded-xl overflow-hidden shadow-2xl shadow-black/50 hover:border-[#C778DD]/50 hover:shadow-[0_0_30px_rgba(199,120,221,0.15)] transition-all duration-300 grid grid-cols-1 lg:grid-cols-12"
+        >
           
           {/* Sidebar / File Tree Explorer */}
           <div className="lg:col-span-4 bg-[#1e2227] border-b lg:border-b-0 lg:border-r border-[#ABB2BF]/25 p-4 flex flex-col">
@@ -66,7 +79,7 @@ export function Experience() {
                     onClick={() => setActiveFileIndex(index)}
                     className={`w-full text-left px-3 py-2.5 rounded-lg transition-all duration-200 flex items-center gap-2.5 font-mono text-xs cursor-pointer ${
                       isSelected
-                        ? 'bg-[#282C33] text-white border-l-2 border-[#C778DD] shadow-sm'
+                        ? 'bg-[#282C33] text-white border-l-2 border-[#C778DD] shadow-[0_0_15px_rgba(199,120,221,0.25)]'
                         : 'text-[#ABB2BF] hover:bg-[#282C33]/50 hover:text-white'
                     }`}
                   >
@@ -78,7 +91,7 @@ export function Experience() {
             </div>
 
             <div className="mt-auto pt-6 hidden lg:block">
-              <div className="bg-[#282C33] p-3 rounded-lg border border-[#ABB2BF]/20 text-[11px] font-mono text-[#ABB2BF]/60">
+              <div className="bg-[#282C33] p-3 rounded-lg border border-[#ABB2BF]/20 text-[11px] font-mono text-[#ABB2BF]/60 shadow-inner">
                 <span className="text-[#C778DD]">Tip:</span> Click files to inspect serialized career source records.
               </div>
             </div>
@@ -89,7 +102,7 @@ export function Experience() {
             
             {/* Editor Tab Bar */}
             <div className="bg-[#1e2227] border-b border-[#ABB2BF]/20 px-4 py-2 flex items-center justify-between text-xs font-mono">
-              <div className="flex items-center gap-2 bg-[#282C33] px-3 py-1.5 rounded-t border-t-2 border-[#C778DD] text-white">
+              <div className="flex items-center gap-2 bg-[#282C33] px-3 py-1.5 rounded-t border-t-2 border-[#C778DD] text-white shadow-sm">
                 <FileCode className="w-3.5 h-3.5 text-[#C778DD]" />
                 <span>{currentFilename}</span>
               </div>
@@ -100,7 +113,13 @@ export function Experience() {
             </div>
 
             {/* Code Editor Body */}
-            <div className="p-6 md:p-8 font-mono text-xs sm:text-sm overflow-x-auto">
+            <motion.div 
+              key={activeFileIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="p-6 md:p-8 font-mono text-xs sm:text-sm overflow-x-auto"
+            >
               
               {/* Role Title Comment Header */}
               <div className="text-[#ABB2BF]/50 mb-4">
@@ -148,7 +167,7 @@ export function Experience() {
                     <span className="text-[#ABB2BF]">techStack:</span> [
                     <div className="flex flex-wrap gap-1.5 pl-4 mt-1.5">
                       {activeItem.technologies.map((tech) => (
-                        <span key={tech} className="text-[#98C379] bg-[#1e2227] px-2 py-0.5 rounded border border-[#ABB2BF]/20">
+                        <span key={tech} className="text-[#98C379] bg-[#1e2227] px-2 py-0.5 rounded border border-[#ABB2BF]/20 shadow-sm">
                           "{tech}"
                         </span>
                       ))}
@@ -163,7 +182,7 @@ export function Experience() {
                 </div>
               </div>
 
-            </div>
+            </motion.div>
 
             {/* Editor Status Bar Footer */}
             <div className="bg-[#1e2227] border-t border-[#ABB2BF]/20 px-4 py-2 mt-auto flex items-center justify-between text-[11px] font-mono text-[#ABB2BF]/60">
@@ -179,7 +198,7 @@ export function Experience() {
 
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>
