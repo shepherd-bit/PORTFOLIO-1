@@ -1,4 +1,4 @@
-import { Github, Instagram } from 'lucide-react';
+import { Github, Instagram, Linkedin } from 'lucide-react';
 
 function PeerlistIcon({ className }: { className?: string }) {
   return (
@@ -18,6 +18,11 @@ const socials = [
     name: 'GitHub',
     href: 'https://github.com/shepherd-bit',
     icon: Github,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/titus-oluoch-003244159/?isSelfProfile=true',
+    icon: Linkedin,
   },
   {
     name: 'Peerlist',
