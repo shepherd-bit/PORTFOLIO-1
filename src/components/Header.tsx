@@ -1,5 +1,6 @@
 import { useState, useEffect, MouseEvent } from 'react';
-import { Menu, X, FileText, Code2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, FileText } from 'lucide-react';
 import { portfolioInfo } from '../data/portfolioData';
 
 interface HeaderProps {
@@ -53,33 +54,42 @@ export function Header({ onResumeClick }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-30 bg-[#282C33]/90 backdrop-blur-md border-b border-[#ABB2BF]/15">
+    <motion.header
+      initial={{ y: -50, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="sticky top-0 z-30 bg-[#282C33]/90 backdrop-blur-md border-b border-[#ABB2BF]/15 shadow-lg shadow-black/20"
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
         {/* Logo */}
-        <a 
+        <motion.a 
           href="#home"
           onClick={(e) => scrollToSection(e, '#home')}
           className="flex items-center gap-2.5 group cursor-pointer"
           aria-label="Titus Home"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
-          {/* Logo symbol: Geometric diamond/code icon */}
           <div className="w-5 h-5 border-2 border-[#C778DD] rotate-45 flex items-center justify-center group-hover:bg-[#C778DD]/20 transition-all duration-300">
             <div className="w-1.5 h-1.5 bg-white" />
           </div>
           <span className="font-bold text-white text-lg tracking-wide group-hover:text-[#C778DD] transition-colors">
             {portfolioInfo.name}
           </span>
-        </a>
+        </motion.a>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6 text-sm">
-          {navItems.map((item) => {
+          {navItems.map((item, index) => {
             const isActive = activeSection === item.id;
             return (
-              <a
+              <motion.a
                 key={item.href}
                 href={item.href}
                 onClick={(e) => scrollToSection(e, item.href)}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 className={`transition-colors py-1 ${
                   isActive
                     ? 'text-white font-medium border-b-2 border-[#C778DD]'
@@ -88,19 +98,22 @@ export function Header({ onResumeClick }: HeaderProps) {
               >
                 <span className="text-[#C778DD]">#</span>
                 <span>{item.label.replace('#', '')}</span>
-              </a>
+              </motion.a>
             );
           })}
 
           {/* Resume Action */}
-          <button
+          <motion.button
             onClick={onResumeClick}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
             className="flex items-center gap-1.5 text-sm text-[#ABB2BF] hover:text-[#C778DD] transition-colors px-2 py-1 border border-transparent hover:border-[#C778DD]/40 cursor-pointer"
           >
             <span className="text-[#C778DD]">#</span>
             <span>Resume</span>
             <FileText className="w-3.5 h-3.5 opacity-70" />
-          </button>
+          </motion.button>
         </nav>
 
         {/* Mobile Hamburger Button */}
@@ -122,33 +135,41 @@ export function Header({ onResumeClick }: HeaderProps) {
       </div>
 
       {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#282C33] border-b border-[#ABB2BF]/20 px-6 py-6 space-y-4">
-          <div className="flex flex-col space-y-3 text-base">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
-                className="text-[#ABB2BF] hover:text-white transition-colors flex items-center gap-2 py-1"
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden bg-[#282C33] border-b border-[#ABB2BF]/20 px-6 py-6 space-y-4 overflow-hidden shadow-lg"
+          >
+            <div className="flex flex-col space-y-3 text-base">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => scrollToSection(e, item.href)}
+                  className="text-[#ABB2BF] hover:text-white transition-colors flex items-center gap-2 py-1"
+                >
+                  <span className="text-[#C778DD]">#</span>
+                  <span>{item.label.replace('#', '')}</span>
+                </a>
+              ))}
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onResumeClick();
+                }}
+                className="text-left text-[#ABB2BF] hover:text-[#C778DD] transition-colors flex items-center gap-2 py-1"
               >
                 <span className="text-[#C778DD]">#</span>
-                <span>{item.label.replace('#', '')}</span>
-              </a>
-            ))}
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onResumeClick();
-              }}
-              className="text-left text-[#ABB2BF] hover:text-[#C778DD] transition-colors flex items-center gap-2 py-1"
-            >
-              <span className="text-[#C778DD]">#</span>
-              <span>Resume (PDF View)</span>
-            </button>
-          </div>
-        </div>
-      )}
-    </header>
+                <span>Resume (PDF View)</span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
