@@ -1,4 +1,5 @@
 import { useState, FormEvent } from 'react';
+import { motion } from 'framer-motion';
 import { Phone, Mail, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { portfolioInfo } from '../data/portfolioData';
 import { DotGrid } from './DotGrid';
@@ -83,7 +84,7 @@ export function Contacts() {
   ];
 
   return (
-    <section id="contacts" className="py-14 md:py-20 relative">
+    <section id="contacts" className="py-14 md:py-20 relative overflow-hidden">
       
       {/* Decorative dot matrix on the far left */}
       <div className="hidden xl:block absolute left-4 bottom-20 pointer-events-none opacity-40">
@@ -93,28 +94,46 @@ export function Contacts() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex items-center gap-4 mb-10">
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex items-center gap-4 mb-10"
+        >
           <div className="flex items-center gap-1">
-            <span className="text-2xl sm:text-3xl font-bold text-[#C778DD]">#</span>
+            <span className="text-2xl sm:text-3xl font-bold text-[#C778DD] drop-shadow-[0_0_10px_rgba(199,120,221,0.5)]">#</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-wide">
               contacts
             </h2>
           </div>
           {/* Horizontal Accent Line */}
-          <div className="h-[1px] bg-[#C778DD] flex-grow max-w-xs opacity-80" />
-        </div>
+          <div className="h-[1px] bg-[#C778DD] flex-grow max-w-xs opacity-80 shadow-[0_0_8px_rgba(199,120,221,0.4)]" />
+        </motion.div>
 
         {/* Description */}
-        <p className="text-sm sm:text-base text-[#ABB2BF] leading-relaxed mb-8">
+        <motion.p 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-sm sm:text-base text-[#ABB2BF] leading-relaxed mb-8"
+        >
           {portfolioInfo.contacts.availability}
-        </p>
+        </motion.p>
 
         {/* Content Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
 
            {/* Left Column: Interactive Message Form */}
-           <div className="lg:col-span-7">
-             <div className="border border-[#ABB2BF]/60 bg-[#282C33] p-5 sm:p-6 space-y-4">
+           <motion.div 
+             initial={{ opacity: 0, x: -30 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6 }}
+             className="lg:col-span-7"
+           >
+             <div className="border border-[#ABB2BF]/60 bg-[#282C33] p-5 sm:p-6 space-y-4 shadow-2xl shadow-black/50 hover:border-[#C778DD]/60 hover:shadow-[0_0_30px_rgba(199,120,221,0.15)] transition-all duration-300">
                <div className="flex items-center justify-between border-b border-[#ABB2BF]/30 pb-3">
                  <span className="text-white font-medium text-sm flex items-center gap-2">
                    <span className="text-[#C778DD] font-mono">&gt;</span> Quick Inquiry Dispatch
@@ -124,7 +143,7 @@ export function Contacts() {
 
                {formSubmitted ? (
                  <div className="py-6 flex flex-col items-center text-center space-y-3">
-                   <div className="w-10 h-10 border border-emerald-400 bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                   <div className="w-10 h-10 border border-emerald-400 bg-emerald-500/10 flex items-center justify-center text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.3)]">
                      <CheckCircle2 className="w-6 h-6" />
                    </div>
                    <h4 className="text-white font-bold text-base">Message Sent!</h4>
@@ -156,7 +175,7 @@ export function Contacts() {
                          value={formData.name}
                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                          placeholder="Your Name / Company"
-                         className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
+                         className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] shadow-inner transition-colors"
                        />
                      </div>
                      <div>
@@ -170,7 +189,7 @@ export function Contacts() {
                          value={formData.email}
                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                          placeholder="you@domain.com"
-                         className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
+                         className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] shadow-inner transition-colors"
                        />
                      </div>
                    </div>
@@ -185,7 +204,7 @@ export function Contacts() {
                        value={formData.title}
                        onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                        placeholder="e.g. Fullstack Web App, Frontend Feature, API Integration"
-                       className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors"
+                       className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] shadow-inner transition-colors"
                      />
                    </div>
 
@@ -200,15 +219,17 @@ export function Contacts() {
                        value={formData.message}
                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                        placeholder="Tell me about your requirements, timeline, and goals..."
-                       className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] transition-colors resize-none"
+                       className="w-full bg-[#1E2228] border border-[#ABB2BF]/50 px-3 py-2 text-white placeholder-[#ABB2BF]/40 focus:outline-none focus:border-[#C778DD] shadow-inner transition-colors resize-none"
                      />
                    </div>
 
                    <div className="flex justify-end pt-1">
-                     <button
+                     <motion.button
+                       whileHover={{ scale: 1.02 }}
+                       whileTap={{ scale: 0.98 }}
                        type="submit"
                        disabled={isSending}
-                       className="inline-flex items-center gap-2 border border-[#C778DD] text-white px-5 py-2.5 font-medium hover:bg-[#C778DD]/20 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                       className="inline-flex items-center gap-2 border border-[#C778DD] text-white px-5 py-2.5 font-medium bg-[#282C33] hover:bg-[#C778DD]/20 shadow-[0_0_15px_rgba(199,120,221,0.2)] hover:shadow-[0_0_25px_rgba(199,120,221,0.4)] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                      >
                        {isSending ? (
                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -216,16 +237,22 @@ export function Contacts() {
                          <Send className="w-3.5 h-3.5" />
                        )}
                        <span>{isSending ? 'Sending...' : 'Send message ->'}</span>
-                     </button>
+                     </motion.button>
                    </div>
                  </form>
                )}
              </div>
-           </div>
+           </motion.div>
 
            {/* Right Column: "Instant Direct Message/Call" Box */}
-           <div className="lg:col-span-5">
-             <div className="border border-[#ABB2BF] bg-[#282C33] p-5 sm:p-6 space-y-4">
+           <motion.div 
+             initial={{ opacity: 0, x: 30 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.6, delay: 0.2 }}
+             className="lg:col-span-5"
+           >
+             <div className="border border-[#ABB2BF] bg-[#282C33] p-5 sm:p-6 space-y-4 shadow-2xl shadow-black/50 hover:border-[#C778DD] hover:shadow-[0_0_30px_rgba(199,120,221,0.15)] transition-all duration-300">
                <h3 className="text-white font-semibold text-base sm:text-lg border-b border-[#ABB2BF]/30 pb-3">
                  Instant Direct Message/Call
                </h3>
@@ -237,7 +264,7 @@ export function Contacts() {
                      key={method.name}
                      href={method.href}
                      {...(method.isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
-                     className="flex items-center gap-3 text-sm text-[#ABB2BF] hover:text-white transition-colors group"
+                     className="flex items-center gap-3 text-sm text-[#ABB2BF] hover:text-white transition-colors group p-2 rounded hover:bg-[#1e2227]/60"
                    >
                      <Icon className={`w-4 h-4 ${method.color}`} />
                      <span className="font-mono">{method.name}</span>
@@ -246,12 +273,12 @@ export function Contacts() {
                })}
 
                {/* Quick note badge */}
-               <div className="pt-2 text-[11px] text-[#ABB2BF]/70 font-mono flex items-center gap-1.5">
-                 <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
+               <div className="pt-2 text-[11px] text-[#ABB2BF]/70 font-mono flex items-center gap-1.5 border-t border-[#ABB2BF]/20 mt-4">
+                 <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                  <span>Available for immediate contracts & proposals</span>
                </div>
              </div>
-           </div>
+           </motion.div>
 
         </div>
 
